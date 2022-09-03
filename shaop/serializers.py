@@ -19,8 +19,8 @@ class ItemSerializer(serializers.ModelSerializer):
         model = Item
         fields = '__all__'
 
-    # def validate(self, data):
-    #     qr = str(data['category'])+'C'+str(data['price'])+'P'+str(data['id'])+'I'
-    #     if str(data['QR']) != qr:
-    #         raise serializers.ValidationError("QR is incorrect")
-    #     return data
+    def validate(self, data):
+        qr = str(data['category'])+'C'+str(data['price'])+'P'+str(data['id'])+'I'
+        if str(data['QR']) != qr:
+            raise serializers.ValidationError("QR is incorrect")
+        return data
